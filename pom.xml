@@ -20,6 +20,8 @@
         <validation.version>2.0.1.Final</validation.version>
         <thumbnailator.version>0.4.17</thumbnailator.version>
         <hutool.version>5.7.19</hutool.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <httpasyncclient.version>4.1.3</httpasyncclient.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,6 +33,17 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -75,6 +88,11 @@
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
+            <artifactId>hutool-http</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
             <artifactId>hutool-crypto</artifactId>
             <version>${hutool.version}</version>
         </dependency>
@@ -84,10 +102,34 @@
             <version>31.0.1-jre</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
+            <version>${httpasyncclient.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
+    <!--构建部署配置-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Private Nexus Snapshots Repository</name>
+            <url>http://192.168.60.109:8081/repository/nexus/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Private Nexus Releases Repository</name>
+            <url>http://192.168.60.109:8081/repository/nexus/</url>
+        </repository>
+    </distributionManagement>
 </project>
